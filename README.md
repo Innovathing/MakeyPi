@@ -15,11 +15,11 @@ sudo service makeypi start
 ## Add daemon at startup
 
 ```bash
-insserv makeypi
+sudo insserv makeypi
 ```
 
 ## Remove ademon at startup
 
 ```bash
-insserv -r makeypi
+sudo insserv -r makeypi
 ```
