@@ -2,7 +2,7 @@
 #encoding: utf-8
 
 import argparse
-from evdev import InputDevice, list_devices, categorize, ecodes
+from evdev import InputDevice, list_devices, ecodes
 
 parser = argparse.ArgumentParser(description='Take picture when a key is pressed :o')
 parser.add_argument('-i', '--input',
@@ -28,8 +28,11 @@ else:
 	try:
 		device = InputDevice(args.input_file)
 		print "[+] monitoring device : " + device.fn, device.name, device.phys
+		last_pix = 0
 		for event in device.read_loop():
-			if event.type == ecodes.EV_KEY:
-				print categorize(event)
+			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
+				last_pix = event.timestamp()
+				print "pix !"
+				print event.timestamp()
 	except Exception, e:
 		print "[-] Error : " + str(e)
