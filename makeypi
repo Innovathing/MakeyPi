@@ -1,0 +1,50 @@
+#!/bin/bash
+# /etc/init.d/makeypi
+
+### BEGIN INIT INFO
+# Provides:          makeypi
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Example initscript
+# Description:       This service is used to launch makeypi
+### END INIT INFO
+
+DIR=/home/pi/MakeyPi
+DAEMON=$DIR/MakeyPi.py
+DAEMON_NAME=makeypi
+
+do_start() {
+    log_daemon_msg "Starting $DAEMON_NAME daemon"
+    log_end_msg $?
+}
+
+do_stop() {
+    log_daemon_msg "Stoping $DAEMON_NAME daemon"
+    log_end_msg $?
+}
+
+. /lib/lsb/init-functions
+
+case "$1" in 
+    start|stop)
+        do_${1}
+        ;;
+
+    restart|reload|force-reload)
+        do_stop
+        do_start
+        ;;
+
+    status)
+        echo "not yet."
+        ;;
+
+    *)
+        echo "Usage: /etc/init.d/$DAEMON_NAME {start|stop|restart|status}"
+        exit 1
+        ;;
+esac
+
+exit 0
