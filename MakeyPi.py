@@ -23,8 +23,11 @@ if args.list_devices:
 		for device in devices:
 			print "\t - " + device.fn, device.name, device.phys
 else:
-	device = InputDevice(args.input_file)
-	print "[+] monitoring device : " + device.fn, device.name, device.phys
-	for event in device.read_loop():
-		if event.type == ecodes.EV_KEY:
-			print categorize(event)
+	try:
+		device = InputDevice(args.input_file)
+		print "[+] monitoring device : " + device.fn, device.name, device.phys
+		for event in device.read_loop():
+			if event.type == ecodes.EV_KEY:
+				print categorize(event)
+	except Exception, e:
+		print "[-] Error : " + str(e)
