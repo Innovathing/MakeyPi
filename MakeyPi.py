@@ -2,6 +2,7 @@
 #encoding: utf-8
 
 import argparse
+from tweetbot import *
 from evdev import InputDevice, list_devices, ecodes
 
 parser = argparse.ArgumentParser(description='Take picture when a key is pressed :o')
