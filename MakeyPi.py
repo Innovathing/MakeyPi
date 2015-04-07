@@ -2,6 +2,7 @@
 #encoding: utf-8
 
 import argparse
+import picamera
 from tweetbot import *
 from evdev import InputDevice, list_devices, ecodes
 
@@ -33,7 +34,9 @@ else:
 		for event in device.read_loop():
 			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
 				last_pix = event.timestamp()
-				print "pix !"
-				print event.timestamp()
+				with picamera.PiCamera() as camera:
+					camera.resolution = (1024, 768)
+					camera.capture('oizeau.jpg')
+					print event.timestamp()
 	except Exception, e:
 		print "[-] Error : " + str(e)
