@@ -4,6 +4,7 @@
 import argparse
 import picamera
 from tweetbot import *
+from messages import get_message
 from evdev import InputDevice, list_devices, ecodes
 
 parser = argparse.ArgumentParser(description='Take picture when a key is pressed :o')
@@ -41,10 +42,11 @@ else:
 			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
 				last_pix = event.timestamp()
 				filename = "%s/%s.jpg" % (args.dir_pix, str(last_pix))
+				message = get_message()
 				with picamera.PiCamera() as camera:
-					camera.resolution = (1024, 768)
+					camera.resolution = (2592, 1944)
 					camera.capture(filename)
-					update_status_pix(api, "Coucou l'oiseau !", filename)
-					print "[+] pix sended"
+					update_status_pix(api, message, filename)
+					print "[+] pix sended : %s, %s" % (message, filename)
 	except Exception, e:
 		print "[-] Error : " + str(e)
