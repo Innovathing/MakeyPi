@@ -16,6 +16,10 @@ parser.add_argument('-l', '--list',
 					const=True,
 					default=False,
 					help='list connected devices')
+parser.add_argument('-d', '--dir',
+					dest='dir_pix',
+					default='/var/www/',
+					help='directory where store images')
 args = parser.parse_args()
 
 if args.list_devices:
@@ -36,10 +40,11 @@ else:
 		for event in device.read_loop():
 			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
 				last_pix = event.timestamp()
+				filename = "%s/%s.jpg" % (args.dir_pix, str(last_pix))
 				with picamera.PiCamera() as camera:
 					camera.resolution = (1024, 768)
-					camera.capture('/tmp/oizeau.jpg')
-					update_status_pix(api, "Oh le bel oiseau", "/tmp/oizeau.jpg")
-					print event.timestamp()
+					camera.capture(filename)
+					update_status_pix(api, "Coucou l'oiseau !", filename)
+					print "[+] pix sended"
 	except Exception, e:
 		print "[-] Error : " + str(e)
