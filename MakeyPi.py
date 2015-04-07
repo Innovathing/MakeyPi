@@ -31,12 +31,15 @@ else:
 		device = InputDevice(args.input_file)
 		print "[+] monitoring device : " + device.fn, device.name, device.phys
 		last_pix = 0
+		api = connect_api()
+		print "[+] Connected to twitter api"
 		for event in device.read_loop():
 			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
 				last_pix = event.timestamp()
 				with picamera.PiCamera() as camera:
 					camera.resolution = (1024, 768)
-					camera.capture('oizeau.jpg')
+					camera.capture('/tmp/oizeau.jpg')
+					update_status_pix(api, "Oh le bel oiseau", "/tmp/oizeau.jpg")
 					print event.timestamp()
 	except Exception, e:
 		print "[-] Error : " + str(e)

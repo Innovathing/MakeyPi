@@ -8,5 +8,5 @@ def connect_api():
 	api = tweepy.API(auth)
 	return api
 
-def update_status_pix(text, image):
+def update_status_pix(api, text, image):
 	api.update_with_media(filename=image, status=text)
