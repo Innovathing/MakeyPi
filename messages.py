@@ -20,7 +20,8 @@ messages = [
 			"C'est un fléau pour la selection naturelle; mais c'est bon. !",
 			"Ceci n'est pas un oiseau",
 			"Wesh ça va ?",
-			"Elle est un peu à l'arrache cette mangeoire non ?"]
+			"Elle est un peu à l'arrache cette mangeoire non ?",
+			"Don't kill the eating bird"]
 
 def get_message():
 	ret = random.choice(messages) + hashtags
