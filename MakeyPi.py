@@ -41,10 +41,11 @@ else:
 		for event in device.read_loop():
 			if event.type == ecodes.EV_KEY and event.timestamp()-5 > last_pix:
 				last_pix = event.timestamp()
-				filename = "%s/%s.jpg" % (args.dir_pix, str(last_pix))
+				last_pix_name = "no_log"
+				filename = "%s/%s.jpg" % (args.dir_pix, str(last_pix_name))
 				message = get_message()
 				with picamera.PiCamera() as camera:
-					camera.resolution = (2592, 1944)
+					camera.resolution = (1280, 720)
 					camera.capture(filename)
 					update_status_pix(api, message, filename)
 					print "[+] pix sended : %s, %s" % (message, filename)
