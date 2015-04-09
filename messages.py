@@ -23,7 +23,10 @@ messages = [
 			"Wesh ça va ?",
 			"Elle est un peu à l'arrache cette mangeoire non ?",
 			"Don't kill the eating bird",
-			"Birdy miam miam"]
+			"Birdy miam miam",
+			"Look at them twittering",
+			"Tweet tweet",
+			"Le petit oiseau va sortir"]
 
 def get_message():
 	ret = random.choice(messages) + hashtags
