@@ -15,7 +15,7 @@ messages = [
 			"Maxi Bestof Bigmac, frites eeeet coca please.",
 			"A trois je me tire sans payer, un ... deux ...",
 			"Say hello to my little friend",
-			"Tu ne dois pas connaire Hitchcock toi ?",
+			"Tu ne dois pas connaître Hitchcock toi ?",
 			"Le bonheur n’est réel que lorsqu’il est dans ma bouche.",
 			"Selfiiiie",
 			"C'est un fléau pour la selection naturelle; mais c'est bon. !",
