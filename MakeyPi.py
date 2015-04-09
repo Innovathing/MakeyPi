@@ -48,6 +48,6 @@ else:
 					camera.resolution = (1280, 720)
 					camera.capture(filename)
 					update_status_pix(api, message, filename)
-					print "[+] pix sended : %s, %s" % (message, filename)
+					print "[+] pix sended : %f, %s, %s" % (last_pix, message, filename)
 	except Exception, e:
 		print "[-] Error : " + str(e)
