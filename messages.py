@@ -21,7 +21,8 @@ messages = [
 			"Ceci n'est pas un oiseau",
 			"Wesh ça va ?",
 			"Elle est un peu à l'arrache cette mangeoire non ?",
-			"Don't kill the eating bird"]
+			"Don't kill the eating bird",
+			"Birdy miam miam"]
 
 def get_message():
 	ret = random.choice(messages) + hashtags
