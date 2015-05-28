@@ -2,7 +2,7 @@
 
 import random
 
-hashtags = " #iot #insa #LaBonneMangeoire"
+hashtags = " #io15 #ioExtended_Tlse #LaBonneMangeoire"
 messages = [
 			"Oh le bel oiseau !",
 			"Laisses-en pour les autres !",
